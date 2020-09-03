@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/api/eth', route);
+app.use('/api/uniswap', route);
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');

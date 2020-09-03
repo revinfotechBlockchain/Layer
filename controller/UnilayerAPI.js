@@ -1,25 +1,54 @@
 
 var express = require('express');
 var config = require('../routes/config.json');
-var ChainId = require('@uniswap/sdk');
-console.log(`The chainId of mainnet is ${ChainId.MAINNET}.`)
-// var Txs = require('ethereumjs-tx').Transaction;
-// var request = require("request");
-// var Web3 = require('web3');
-// const httpEndPoint = config.connectionURL;
-// var web3 = new Web3(new Web3.providers.HttpProvider(httpEndPoint));
-// const contractAddress = config.contractAddress;
-// const abi = require('../controller/abi.json');
+const axios = require('axios');
 
 
 module.exports = {
-    getBalance: async (req, res) => {
-        try {
-            console.log("Hello")
-        } catch(err){
-            let response = {status:false, message:"Unable to get Owner Address, Please Try Again!!!"};
+ 
+    getPairPriceDetail: async (req, res) => {
+        
+        if (req.query.from && req.query.to && req.query.from == "" && !req.query.to == "") {
+            await axios.get('https://api-v2.dex.ag/price?from='+req.query.from+'&to='+req.query.to+'&fromAmount='+req.query.fromAmount+'&dex=uniswap').then(async output=>{
+            let response = {status:true, data:output.data};
+            res.send(response);            
+            }).catch(err => {
+                let response = {status:false, message:"Unable to get Pair Price Detail, Please Try Again!!!"};
+                res.send(response);
+            });
+        } else {
+            let response = {status:false, message:"Enter valid Entity & Try Again!!!"};
             res.send(response);
         }
     },
- 
+
+    getPairTradeDetail: async (req, res) => {
+        
+        if (req.query.from && req.query.to && req.query.from == "" && !req.query.to == "") {
+            await axios.get('https://api-v2.dex.ag/trade?from='+req.query.from+'&to='+req.query.to+'&fromAmount='+req.query.fromAmount+'&dex=uniswap').then(async output=>{
+            let response = {status:true, data:output.data};
+            res.send(response);            
+            }).catch(err => {
+                let response = {status:false, message:"Unable to get Pair Trade Details, Please Try Again!!!"};
+                res.send(response);
+            });
+        } else {
+            let response = {status:false, message:"Enter valid Entity & Try Again!!!"};
+            res.send(response);
+        }
+    },
+
+    getAvailableTokenPairs : async (req, res) => {
+
+            await axios.get('https://api-v2.dex.ag/token-list-full').then(async output=>{
+            let response = {status:true, data:output.data};
+            res.send(response);            
+            }).catch(err => {
+                console.log(err)
+                let response = {status:false, message:"Unable to get Available Token Pairs, Please Try Again!!!"};
+                res.send(response);
+            });
+    },
+
+
 }
