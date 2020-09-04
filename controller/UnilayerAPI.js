@@ -47,8 +47,12 @@ module.exports = {
     // },
  
     getPairPriceDetail: async (req, res) => {
+<<<<<<< HEAD
         
         if (req.query.from && req.query.to && !req.query.from == "" && !req.query.to == "") {
+=======
+        if (req.query.from && req.query.to && req.query.from == "" && !req.query.to == "") {
+>>>>>>> f01428b81ac803e02d21deada1683845c9cb432e
             await axios.get('https://api-v2.dex.ag/price?from='+req.query.from+'&to='+req.query.to+'&fromAmount='+req.query.fromAmount+'&dex=uniswap').then(async output=>{
             let response = {status:true, data:output.data};
             res.send(response);            
@@ -63,8 +67,12 @@ module.exports = {
     },
 
     getPairTradeDetail: async (req, res) => {
+<<<<<<< HEAD
         
         if (req.query.from && req.query.to && !req.query.from == "" && !req.query.to == "") {
+=======
+        if (req.query.from && req.query.to && req.query.from == "" && !req.query.to == "") {
+>>>>>>> f01428b81ac803e02d21deada1683845c9cb432e
             await axios.get('https://api-v2.dex.ag/trade?from='+req.query.from+'&to='+req.query.to+'&fromAmount='+req.query.fromAmount+'&dex=uniswap').then(async output=>{
             let response = {status:true, data:output.data};
             res.send(response);            
@@ -79,7 +87,6 @@ module.exports = {
     },
 
     getAvailableTokenPairs : async (req, res) => {
-
             await axios.get('https://api-v2.dex.ag/token-list-full').then(async output=>{
             let response = {status:true, data:output.data};
             res.send(response);            
@@ -89,6 +96,4 @@ module.exports = {
                 res.send(response);
             });
     },
-
-
 }
