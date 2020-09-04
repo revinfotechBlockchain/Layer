@@ -8,4 +8,4 @@ mongoose.connect('mongodb://localhost:27017/JsonData',{userNewUrlParser: true}, 
     }
 })
 
-require('./SaleSessionManagement');
+require('./PairDetails');
