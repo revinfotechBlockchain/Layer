@@ -19,7 +19,6 @@ module.exports = {
             let response = {status:true, data:output.data};
             res.send(response);            
             }).catch(err => {
-                console.log(err)
                 let response = {status:false, message:"Unable to get Pair Exchange Detail by Address, Please Try Again!!!"};
                 res.send(response);
             });
@@ -33,10 +32,8 @@ module.exports = {
         
             await axios.get('https://data-api.defipulse.com/api/v1/blocklytics/pools/v1/exchanges?api-key='+apiKey+'&platform=Uniswap-v2').then(async output=>{
             let response = {status:true, data:output.data};
-            //console.log(output.data.results.assets);
             res.send(response);            
             }).catch(err => {
-                console.log(err)
                 let response = {status:false, message:"Unable to get Pair Price Detail, Please Try Again!!!"};
                 res.send(response);
             });
@@ -80,7 +77,6 @@ module.exports = {
             let response = {status:true, data:output.data};
             res.send(response);            
             }).catch(err => {
-                console.log(err)
                 let response = {status:false, message:"Unable to get Available Token Pairs, Please Try Again!!!"};
                 res.send(response);
             });
