@@ -3,30 +3,53 @@ const router = express.Router();
 const unilayerApi = require('../controller/UnilayerAPI');
 
 
-
     /**
-    * @typedef getPairExchangeDetailByAddress
+    * @typedef getOwnerByExchangeAddress
     * @property {String} exchangeAddress.required - Add exchangeAddress - eg: qwertyuikjhgfdsdfvbn
     */
     /**
-    * @route GET /api/uniswap/getPairExchangeDetailByAddress
-    * @param {getPairExchangeDetailByAddress.model} exchangeAddress.query
+    * @route GET /api/unilayer/getOwnerByExchangeAddress
+    * @param {getOwnerByExchangeAddress.model} exchangeAddress.query
     * @group Generic_API
     * @security Basic Auth
     */
-router.get('/getPairExchangeDetailByAddress', unilayerApi.getPairExchangeDetailByAddress);
+router.get('/getOwnerByExchangeAddress', unilayerApi.getOwnerByExchangeAddress);
 
     /**
-    * @typedef getAllPairExchangeDetail
-    * @property {String} platform.required - Add platform - eg: uniswap-v2
+    * @typedef getPairDetailByExchangeAddress
+    * @property {String} exchangeAddress.required - Add exchangeAddress - eg: qwertyuikjhgfdsdfvbn
     */
     /**
-    * @route GET /api/uniswap/getAllPairExchangeDetail
-    * @param {getAllPairExchangeDetail.model} platform.query
+    * @route GET /api/unilayer/getPairDetailByExchangeAddress
+    * @param {getPairDetailByExchangeAddress.model} exchangeAddress.query
     * @group Generic_API
     * @security Basic Auth
     */
-router.get('/getAllPairExchangeDetail', unilayerApi.getAllPairExchangeDetail);
+router.get('/getPairDetailByExchangeAddress', unilayerApi.getPairDetailByExchangeAddress);
+
+    /**
+    * @typedef getTradeDetailByExchangeAddress
+    * @property {String} exchangeAddress.required - Add exchangeAddress - eg: qwertyuikjhgfdsdfvbn
+    */
+    /**
+    * @route GET /api/unilayer/getTradeDetailByExchangeAddress
+    * @param {getTradeDetailByExchangeAddress.model} exchangeAddress.query
+    * @group Generic_API
+    * @security Basic Auth
+    */
+router.get('/getTradeDetailByExchangeAddress', unilayerApi.getTradeDetailByExchangeAddress);
+
+    /**
+    * @typedef getReturnSharesDetailByExchangeAddress
+    * @property {String} exchangeAddress.required - Add exchangeAddress - eg: qwertyuikjhgfdsdfvbn
+    */
+    /**
+    * @route GET /api/unilayer/getReturnSharesDetailByExchangeAddress
+    * @param {getReturnSharesDetailByExchangeAddress.model} exchangeAddress.query
+    * @group Generic_API
+    * @security Basic Auth
+    */
+router.get('/getReturnSharesDetailByExchangeAddress', unilayerApi.getReturnSharesDetailByExchangeAddress);
 
    /**
     * @typedef getPairPriceDetail
@@ -35,7 +58,7 @@ router.get('/getAllPairExchangeDetail', unilayerApi.getAllPairExchangeDetail);
     * @property {String} fromAmount.required - Add fromAmount - eg: 1
     */
     /**
-    * @route GET /api/uniswap/getPairPriceDetail
+    * @route GET /api/unilayer/getPairPriceDetail
     * @param {getPairPriceDetail.model} from.query
     * @param {getPairPriceDetail.model} to.query
     * @param {getPairPriceDetail.model} fromAmount.query
@@ -51,7 +74,7 @@ router.get('/getPairPriceDetail', unilayerApi.getPairPriceDetail);
     * @property {String} fromAmount.required - Add fromAmount - eg: 1
     */
     /**
-    * @route GET /api/uniswap/getPairTradeDetail
+    * @route GET /api/unilayer/getPairTradeDetail
     * @param {getPairPriceDetail.model} from.query
     * @param {getPairPriceDetail.model} to.query
     * @param {getPairPriceDetail.model} fromAmount.query
@@ -61,14 +84,24 @@ router.get('/getPairPriceDetail', unilayerApi.getPairPriceDetail);
 router.get('/getPairTradeDetail', unilayerApi.getPairTradeDetail);
 
     /**
-    * @typedef getAvailableTokenPairs
+    * @typedef getAllPairExchangeDetail
     */
     /**
-    * @route GET /api/uniswap/getAvailableTokenPairs
+    * @route GET /api/unilayer/getAllPairExchangeDetail
     * @group Generic_API
     * @security Basic Auth
     */
-router.get('/getAvailableTokenPairs', unilayerApi.getAvailableTokenPairs);
+router.get('/getAllPairExchangeDetail', unilayerApi.getAllPairExchangeDetail);
+
+    /**
+    * @typedef getAllAvailableTokenPairs
+    */
+    /**
+    * @route GET /api/unilayer/getAllAvailableTokenPairs
+    * @group Generic_API
+    * @security Basic Auth
+    */
+router.get('/getAllAvailableTokenPairs', unilayerApi.getAllAvailableTokenPairs);
 
     
 

@@ -11,15 +11,15 @@ var apiKey = "e5bc8349129fe611931adedb2c6835f3500ba08cbcfb3ba24a01db648614";
 
 module.exports = {
 
-    getPairExchangeDetailByAddress: async (req, res) => {
+    getOwnerByExchangeAddress: async (req, res) => {
         
         if (req.query.exchangeAddress && !req.query.exchangeAddress == "") {
             console.log(req.query.exchangeAddress)
-            await axios.get('https://data-api.defipulse.com/api/v1/blocklytics/pools/v1/exchange/'+req.query.exchangeAddress,{headers: {'Authorization': `Basic ${apiKey}` }}).then(async output=>{
-            let response = {status:true, data:output.data};
+            await axios.get('https://data-api.defipulse.com/api/v1/blocklytics/pools/v0/liquidity/'+req.query.exchangeAddress+'/owners',{headers: {'Authorization': `Basic ${apiKey}` }}).then(async output=>{
+            let response = {status:true, data:output.data.results};
             res.send(response);            
             }).catch(err => {
-                let response = {status:false, message:"Unable to get Pair Exchange Detail by Address, Please Try Again!!!"};
+                let response = {status:false, message:"Unable to get Owner Detail by Exchange Address, Please Try Again!!!"};
                 res.send(response);
             });
         } else {
@@ -28,15 +28,55 @@ module.exports = {
         }
     },
 
-    getAllPairExchangeDetail: async (req, res) => {
+    getPairDetailByExchangeAddress: async (req, res) => {
         
-            await axios.get('https://data-api.defipulse.com/api/v1/blocklytics/pools/v1/exchanges?api-key='+apiKey+'&platform=Uniswap-v2').then(async output=>{
+        if (req.query.exchangeAddress && !req.query.exchangeAddress == "") {
+            console.log(req.query.exchangeAddress)
+            await axios.get('https://data-api.defipulse.com/api/v1/blocklytics/pools/v1/exchange/'+req.query.exchangeAddress,{headers: {'Authorization': `Basic ${apiKey}` }}).then(async output=>{
             let response = {status:true, data:output.data};
             res.send(response);            
             }).catch(err => {
-                let response = {status:false, message:"Unable to get Pair Price Detail, Please Try Again!!!"};
+                let response = {status:false, message:"Unable to get Pair Detail by Exchange Address, Please Try Again!!!"};
                 res.send(response);
             });
+        } else {
+            let response = {status:false, message:"Enter valid Exchange Address & Try Again!!!"};
+            res.send(response);
+        }
+    },
+
+    getTradeDetailByExchangeAddress: async (req, res) => {
+        
+        if (req.query.exchangeAddress && !req.query.exchangeAddress == "") {
+            console.log(req.query.exchangeAddress)
+            await axios.get('https://data-api.defipulse.com/api/v1/blocklytics/pools/v1/trades/'+req.query.exchangeAddress,{headers: {'Authorization': `Basic ${apiKey}` }}).then(async output=>{   
+            let response = {status:true, data:output.data.results};
+            res.send(response);            
+            }).catch(err => {
+                let response = {status:false, message:"Unable to get Trade Detail by Exchange Address, Please Try Again!!!"};
+                res.send(response);
+            });
+        } else {
+            let response = {status:false, message:"Enter valid Exchange Address & Try Again!!!"};
+            res.send(response);
+        }
+    },
+
+    getReturnSharesDetailByExchangeAddress: async (req, res) => {
+        
+        if (req.query.exchangeAddress && !req.query.exchangeAddress == "") {
+            console.log(req.query.exchangeAddress)
+            await axios.get('https://data-api.defipulse.com/api/v1/blocklytics/pools/v1/returns/'+req.query.exchangeAddress,{headers: {'Authorization': `Basic ${apiKey}` }}).then(async output=>{              
+            let response = {status:true, data:output.data};
+            res.send(response);            
+            }).catch(err => {
+                let response = {status:false, message:"Unable to get Share and Returns Detail by Exchange Address, Please Try Again!!!"};
+                res.send(response);
+            });
+        } else {
+            let response = {status:false, message:"Enter valid Exchange Address & Try Again!!!"};
+            res.send(response);
+        }
     },
  
     getPairPriceDetail: async (req, res) => {
@@ -71,7 +111,18 @@ module.exports = {
         }
     },
 
-    getAvailableTokenPairs : async (req, res) => {
+    getAllPairExchangeDetail: async (req, res) => {
+        
+        await axios.get('https://data-api.defipulse.com/api/v1/blocklytics/pools/v1/exchanges?api-key='+apiKey+'&platform=Uniswap-v2').then(async output=>{
+        let response = {status:true, data:output.data.results};
+        res.send(response);            
+        }).catch(err => {
+            let response = {status:false, message:"Unable to get Pair Price Detail, Please Try Again!!!"};
+            res.send(response);
+        });
+    },
+
+    getAllAvailableTokenPairs : async (req, res) => {
 
             await axios.get('https://api-v2.dex.ag/token-list-full').then(async output=>{
             let response = {status:true, data:output.data};
