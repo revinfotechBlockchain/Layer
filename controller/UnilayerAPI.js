@@ -3,11 +3,8 @@ const express = require('express');
 const Web3 = require("web3");
 const config = require('../routes/config.json');
 const axios = require('axios');
-//const DEXAG = require('dexag-sdk');
-//import {DEXAG} from 'dexag-sdk'
-//const sdk = DEXAG.fromProvider(window.ethereum);
-var apiKey = "e5bc8349129fe611931adedb2c6835f3500ba08cbcfb3ba24a01db648614";
 
+var apiKey = "e5bc8349129fe611931adedb2c6835f3500ba08cbcfb3ba24a01db648614";
 
 module.exports = {
 
