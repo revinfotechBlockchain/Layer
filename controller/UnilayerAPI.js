@@ -8,7 +8,6 @@ var apiKey = "e5bc8349129fe611931adedb2c6835f3500ba08cbcfb3ba24a01db648614";
 
 module.exports = {
 
-
     /**
     * @dev get owner of particular token exchange address
     * @return address of owner account with balance
