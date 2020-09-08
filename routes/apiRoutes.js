@@ -55,7 +55,7 @@ router.get('/getReturnSharesDetailByExchangeAddress', unilayerApi.getReturnShare
     * @typedef getPairPriceDetail
     * @property {String} from.required - Add from - eg: DAI
     * @property {String} to.required - Add to - eg: DAI
-    * @property {String} fromAmount.required - Add fromAmount - eg: 1
+    * @property {String} fromAmount.required - Add fromAmount - eg: 
     */
     /**
     * @route GET /api/unilayer/getPairPriceDetail
