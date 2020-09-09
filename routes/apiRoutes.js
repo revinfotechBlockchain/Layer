@@ -1,7 +1,7 @@
 const express= require('express');
 const router = express.Router();
 const unilayerApi = require('../controller/UnilayerAPI');
-
+const databaseAPI = require('../controller/CronForFront');
 
     /**
     * @typedef getOwnerByExchangeAddress
@@ -103,6 +103,18 @@ router.get('/getAllPairExchangeDetail', unilayerApi.getAllPairExchangeDetail);
     */
 router.get('/getAllAvailableTokenPairs', unilayerApi.getAllAvailableTokenPairs);
 
-    
+
+
+///////////////////////////Routes for Database API ///////////////////////////////////////////////
+
+    /**
+    * @typedef whitelistExchangeAddress
+    */
+    /**
+    * @route GET /api/unilayer/whitelistExchangeAddress
+    * @group DATABASE_API
+    * @security Basic Auth
+    */
+   router.get('/whitelistExchangeAddress', databaseAPI.whitelistExchangeAddress);
 
 module.exports= router
