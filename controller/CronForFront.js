@@ -13,7 +13,7 @@ const PairExchangeDetail = mongoose.model('PairExchangeDetail');
 var apiKey = "e5bc8349129fe611931adedb2c6835f3500ba08cbcfb3ba24a01db648614";
 
 // cron.schedule('*/10 * * * * *', async () => {
-//             var obj =  { PairName : "" , Data : "{}"  , Status : ""};
+//             var obj =  { pairName : "" , data : "{}"  , status : ""};
 //             await PairExchangeDetail.findOneAndUpdate({StakeId:id},obj,{new: true, upsert: true},(err, doc) => {
 //             if (!err){
 //                 console.log("New Entry Added in Corn") 

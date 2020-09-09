@@ -1,19 +1,18 @@
 const mongoose = require('mongoose');
 
-var OrderPairsData = new mongoose.Schema({
-    PairName: {
-        type: Number,
+var PairExchangeDetail = new mongoose.Schema({
+    pairName: {
+        type: String,
         required: 'This field is required.'
     },
-    Data: {
-        type: Number,
+    data: {
+        type: String,
         required: 'This field is required.'
     },
-    Status: {
+    status: {
         type: Boolean,
         required: 'This field is required.'
-    },
-
+    }
 });
 
-mongoose.model('OrderPairsData', OrderPairsData);
+mongoose.model('PairExchangeDetail', PairExchangeDetail);
