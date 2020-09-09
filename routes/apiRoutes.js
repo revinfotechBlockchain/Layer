@@ -51,7 +51,19 @@ router.get('/getTradeDetailByExchangeAddress', unilayerApi.getTradeDetailByExcha
     */
 router.get('/getReturnSharesDetailByExchangeAddress', unilayerApi.getReturnSharesDetailByExchangeAddress);
 
-   /**
+    /**
+    * @typedef getTransactionByExchangeAddress
+    * @property {String} exchangeAddress.required - Add exchangeAddress - eg: qwertyuikjhgfdsdfvbn
+    */
+    /**
+    * @route GET /api/unilayer/getTransactionByExchangeAddress
+    * @param {getTransactionByExchangeAddress.model} exchangeAddress.query
+    * @group Generic_API
+    * @security Basic Auth
+    */
+router.get('/getTransactionByExchangeAddress', unilayerApi.getTransactionByExchangeAddress);
+
+    /**
     * @typedef getPairPriceDetail
     * @property {String} from.required - Add from - eg: DAI
     * @property {String} to.required - Add to - eg: DAI
