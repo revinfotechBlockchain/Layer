@@ -172,13 +172,13 @@ module.exports = {
     * @dev get all available token pair detail 
     * @return all token pair with their exchange address and symbol 
     */
-    getAllAvailableTokenPairs : async (req, res) => {
+    getAllAvailableToken : async (req, res) => {
 
             await axios.get('https://api-v2.dex.ag/token-list-full').then(async output=>{
             let response = {status:true, data:output.data};
             res.send(response);            
             }).catch(err => {
-                let response = {status:false, message:"Unable to get Available Token Pairs, Please Try Again!!!"};
+                let response = {status:false, message:"Unable to get Available Token, Please Try Again!!!"};
                 res.send(response);
             });
     },

@@ -10,7 +10,7 @@ const unilayerApi = require('../controller/UnilayerAPI');
     /**
     * @route GET /api/unilayer/getOwnerByExchangeAddress
     * @param {getOwnerByExchangeAddress.model} exchangeAddress.query
-    * @group Generic_API
+    * @group Unilayer_API
     * @security Basic Auth
     */
 router.get('/getOwnerByExchangeAddress', unilayerApi.getOwnerByExchangeAddress);
@@ -22,7 +22,7 @@ router.get('/getOwnerByExchangeAddress', unilayerApi.getOwnerByExchangeAddress);
     /**
     * @route GET /api/unilayer/getPairDetailByExchangeAddress
     * @param {getPairDetailByExchangeAddress.model} exchangeAddress.query
-    * @group Generic_API
+    * @group Unilayer_API
     * @security Basic Auth
     */
 router.get('/getPairDetailByExchangeAddress', unilayerApi.getPairDetailByExchangeAddress);
@@ -34,7 +34,7 @@ router.get('/getPairDetailByExchangeAddress', unilayerApi.getPairDetailByExchang
     /**
     * @route GET /api/unilayer/getTradeDetailByExchangeAddress
     * @param {getTradeDetailByExchangeAddress.model} exchangeAddress.query
-    * @group Generic_API
+    * @group Unilayer_API
     * @security Basic Auth
     */
 router.get('/getTradeDetailByExchangeAddress', unilayerApi.getTradeDetailByExchangeAddress);
@@ -46,7 +46,7 @@ router.get('/getTradeDetailByExchangeAddress', unilayerApi.getTradeDetailByExcha
     /**
     * @route GET /api/unilayer/getReturnSharesDetailByExchangeAddress
     * @param {getReturnSharesDetailByExchangeAddress.model} exchangeAddress.query
-    * @group Generic_API
+    * @group Unilayer_API
     * @security Basic Auth
     */
 router.get('/getReturnSharesDetailByExchangeAddress', unilayerApi.getReturnSharesDetailByExchangeAddress);
@@ -58,7 +58,7 @@ router.get('/getReturnSharesDetailByExchangeAddress', unilayerApi.getReturnShare
     /**
     * @route GET /api/unilayer/getTransactionByExchangeAddress
     * @param {getTransactionByExchangeAddress.model} exchangeAddress.query
-    * @group Generic_API
+    * @group Unilayer_API
     * @security Basic Auth
     */
 router.get('/getTransactionByExchangeAddress', unilayerApi.getTransactionByExchangeAddress);
@@ -74,7 +74,7 @@ router.get('/getTransactionByExchangeAddress', unilayerApi.getTransactionByExcha
     * @param {getPairPriceDetail.model} from.query
     * @param {getPairPriceDetail.model} to.query
     * @param {getPairPriceDetail.model} fromAmount.query
-    * @group Generic_API
+    * @group Unilayer_API
     * @security Basic Auth
     */
 router.get('/getPairPriceDetail', unilayerApi.getPairPriceDetail);
@@ -90,7 +90,7 @@ router.get('/getPairPriceDetail', unilayerApi.getPairPriceDetail);
     * @param {getPairPriceDetail.model} from.query
     * @param {getPairPriceDetail.model} to.query
     * @param {getPairPriceDetail.model} fromAmount.query
-    * @group Generic_API
+    * @group Unilayer_API
     * @security Basic Auth
     */
 router.get('/getPairTradeDetail', unilayerApi.getPairTradeDetail);
@@ -100,20 +100,20 @@ router.get('/getPairTradeDetail', unilayerApi.getPairTradeDetail);
     */
     /**
     * @route GET /api/unilayer/getAllPairExchangeDetail
-    * @group Generic_API
+    * @group Unilayer_API
     * @security Basic Auth
     */
 router.get('/getAllPairExchangeDetail', unilayerApi.getAllPairExchangeDetail);
 
     /**
-    * @typedef getAllAvailableTokenPairs
+    * @typedef getAllAvailableToken
     */
     /**
-    * @route GET /api/unilayer/getAllAvailableTokenPairs
-    * @group Generic_API
+    * @route GET /api/unilayer/getAllAvailableToken
+    * @group Unilayer_API
     * @security Basic Auth
     */
-router.get('/getAllAvailableTokenPairs', unilayerApi.getAllAvailableTokenPairs);
+router.get('/getAllAvailableToken', unilayerApi.getAllAvailableToken);
 
     
 
