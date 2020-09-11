@@ -11,9 +11,13 @@
   "license": "ISC",
   "dependencies": {
     "@ethersproject/address": "^5.0.3",
+    "@ethersproject/contracts": "^5.0.3",
+    "@ethersproject/solidity": "^5.0.3",
     "@uniswap/sdk": "^3.0.3-beta.1",
+    "axios": "^0.20.0",
     "cookie-parser": "^1.4.5",
     "crypto-random-string": "^3.2.0",
+    "dexag-sdk": "^2.2.9",
     "express": "^4.17.1",
     "express-swagger-generator": "^1.1.17",
     "express-validator": "^6.6.0",
