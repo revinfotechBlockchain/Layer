@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 
-var exchangeAddresses = new mongoose.Schema({
-    pairName: {
+var allTransactions = new mongoose.Schema({
+    transactionType: {
         type: String,
         required: 'This field is required.'
     },
-    exchangeAddress: {
-        type: String,
+    data: {
+        type: Object,
         required: 'This field is required.'
     },
     status: {
@@ -15,4 +15,4 @@ var exchangeAddresses = new mongoose.Schema({
     }
 });
 
-mongoose.model('exchangeAddresses', exchangeAddresses);
+mongoose.model('allTransactions', allTransactions);

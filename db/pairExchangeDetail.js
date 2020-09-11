@@ -6,7 +6,7 @@ var pairExchangeDetail = new mongoose.Schema({
         required: 'This field is required.'
     },
     data: {
-        type: String,
+        type: Object,
         required: 'This field is required.'
     },
     status: {

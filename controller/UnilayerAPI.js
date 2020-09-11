@@ -1,6 +1,6 @@
 
 const express = require('express');
-const Web3 = require("web3");
+// const Web3 = require("web3");
 const config = require('../routes/config.json');
 const axios = require('axios');
 
@@ -13,7 +13,6 @@ module.exports = {
     * @return address of owner account with balance
     */
     getOwnerByExchangeAddress: async (req, res) => {
-        
         if (req.query.exchangeAddress && !req.query.exchangeAddress == "") {
             console.log(req.query.exchangeAddress)
             await axios.get('https://data-api.defipulse.com/api/v1/blocklytics/pools/v0/liquidity/'+req.query.exchangeAddress+'/owners',{headers: {'Authorization': `Basic ${apiKey}` }}).then(async output=>{
@@ -23,7 +22,7 @@ module.exports = {
                 let response = {status:false, message:"Unable to get Owner Detail by Exchange Address, Please Try Again!!!"};
                 res.send(response);
             });
-        } else {
+        }else{
             let response = {status:false, message:"Enter valid Exchange Address & Try Again!!!"};
             res.send(response);
         }
@@ -39,7 +38,7 @@ module.exports = {
             console.log(req.query.exchangeAddress)
             await axios.get('https://data-api.defipulse.com/api/v1/blocklytics/pools/v1/exchange/'+req.query.exchangeAddress,{headers: {'Authorization': `Basic ${apiKey}` }}).then(async output=>{
             let response = {status:true, data:output.data};
-            res.send(response);            
+            res.send(response);        
             }).catch(err => {
                 let response = {status:false, message:"Unable to get Pair Detail by Exchange Address, Please Try Again!!!"};
                 res.send(response);
@@ -161,4 +160,28 @@ module.exports = {
                 res.send(response);
             });
     },
+
+    /**
+    * @dev get token pair transaction detail by exchange address
+    * @return token pair trade detail with price, id, timestamp and other important detail
+    */
+   getTransactionByExchangeAddress: async (req, res) => {    
+    if (req.query.exchangeAddress && !req.query.exchangeAddress == "") {
+        await axios.get('https://data-api.defipulse.com/api/v1/blocklytics/pools/v1/trades/'+req.query.exchangeAddress,{headers: {'Authorization': `Basic ${apiKey}` }}).then(async output=>{   
+        //console.log(output.data.results.transaction)
+        // for (let qwerty of output.data.results){
+        // console.log(qwerty.transaction);
+        // }
+        let response = {status:true, data:output.data.results};
+
+        res.send(response);            
+        }).catch(err => {
+            let response = {status:false, message:"Unable to get Transaction Detail by Exchange Address, Please Try Again!!!"};
+            res.send(response);
+        });
+    } else {
+        let response = {status:false, message:"Enter valid Exchange Address & Try Again!!!"};
+        res.send(response);
+    }
+ },
 }
