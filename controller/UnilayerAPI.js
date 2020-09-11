@@ -14,7 +14,6 @@ module.exports = {
     */
     getOwnerByExchangeAddress: async (req, res) => {
         if (req.query.exchangeAddress && !req.query.exchangeAddress == "") {
-            console.log(req.query.exchangeAddress)
             await axios.get('https://data-api.defipulse.com/api/v1/blocklytics/pools/v0/liquidity/'+req.query.exchangeAddress+'/owners',{headers: {'Authorization': `Basic ${apiKey}` }}).then(async output=>{
             let response = {status:true, data:output.data.results};
             res.send(response);            
@@ -35,7 +34,6 @@ module.exports = {
     getPairDetailByExchangeAddress: async (req, res) => {
         
         if (req.query.exchangeAddress && !req.query.exchangeAddress == "") {
-            console.log(req.query.exchangeAddress)
             await axios.get('https://data-api.defipulse.com/api/v1/blocklytics/pools/v1/exchange/'+req.query.exchangeAddress,{headers: {'Authorization': `Basic ${apiKey}` }}).then(async output=>{
             let response = {status:true, data:output.data};
             res.send(response);        
@@ -56,7 +54,6 @@ module.exports = {
     getTradeDetailByExchangeAddress: async (req, res) => {
         
         if (req.query.exchangeAddress && !req.query.exchangeAddress == "") {
-            console.log(req.query.exchangeAddress)
             await axios.get('https://data-api.defipulse.com/api/v1/blocklytics/pools/v1/trades/'+req.query.exchangeAddress,{headers: {'Authorization': `Basic ${apiKey}` }}).then(async output=>{   
             let response = {status:true, data:output.data.results};
             res.send(response);            
@@ -77,12 +74,36 @@ module.exports = {
     getReturnSharesDetailByExchangeAddress: async (req, res) => {
         
         if (req.query.exchangeAddress && !req.query.exchangeAddress == "") {
-            console.log(req.query.exchangeAddress)
             await axios.get('https://data-api.defipulse.com/api/v1/blocklytics/pools/v1/returns/'+req.query.exchangeAddress,{headers: {'Authorization': `Basic ${apiKey}` }}).then(async output=>{              
             let response = {status:true, data:output.data};
             res.send(response);            
             }).catch(err => {
                 let response = {status:false, message:"Unable to get Share and Returns Detail by Exchange Address, Please Try Again!!!"};
+                res.send(response);
+            });
+        } else {
+            let response = {status:false, message:"Enter valid Exchange Address & Try Again!!!"};
+            res.send(response);
+        }
+    },
+
+    /**
+    * @dev get token pair transaction detail by exchange address
+    * @return token pair trade detail with price, id, timestamp and other important detail
+    */
+    getTransactionByExchangeAddress: async (req, res) => {
+        
+        if (req.query.exchangeAddress && !req.query.exchangeAddress == "") {
+            await axios.get('https://data-api.defipulse.com/api/v1/blocklytics/pools/v1/trades/'+req.query.exchangeAddress,{headers: {'Authorization': `Basic ${apiKey}` }}).then(async output=>{   
+            //console.log(output.data.results.transaction)
+            // for (let qwerty of output.data.results){
+            // console.log(qwerty.transaction);
+            // }
+            let response = {status:true, data:output.data.results};
+
+            res.send(response);            
+            }).catch(err => {
+                let response = {status:false, message:"Unable to get Transaction Detail by Exchange Address, Please Try Again!!!"};
                 res.send(response);
             });
         } else {
@@ -150,13 +171,13 @@ module.exports = {
     * @dev get all available token pair detail 
     * @return all token pair with their exchange address and symbol 
     */
-    getAllAvailableTokenPairs : async (req, res) => {
+    getAllAvailableToken : async (req, res) => {
 
             await axios.get('https://api-v2.dex.ag/token-list-full').then(async output=>{
             let response = {status:true, data:output.data};
             res.send(response);            
             }).catch(err => {
-                let response = {status:false, message:"Unable to get Available Token Pairs, Please Try Again!!!"};
+                let response = {status:false, message:"Unable to get Available Token, Please Try Again!!!"};
                 res.send(response);
             });
     },
