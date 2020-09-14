@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 
-var PairExchangeDetail = new mongoose.Schema({
+var pairExchangeDetail = new mongoose.Schema({
     pairName: {
         type: String,
         required: 'This field is required.'
     },
     data: {
-        type: String,
+        type: Object,
         required: 'This field is required.'
     },
     status: {
@@ -15,4 +15,4 @@ var PairExchangeDetail = new mongoose.Schema({
     }
 });
 
-mongoose.model('PairExchangeDetail', PairExchangeDetail);
+mongoose.model('pairExchangeDetail', pairExchangeDetail);
