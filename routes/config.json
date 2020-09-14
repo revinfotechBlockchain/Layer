@@ -3,6 +3,7 @@
 		"user": "user",
 		"pass": "pass"
     },
-    "connectionURL": "https://ropsten.infura.io/v3/b87c332ed28f41a0ae848b23a51b695e"
+    "connectionURL": "https://ropsten.infura.io/v3/92a626fb48cc4368a08cb87b51b6e967",
+    "contractAddress": "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D"
   }
 
