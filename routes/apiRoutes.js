@@ -135,7 +135,6 @@ router.get('/getAllPairExchangeDetail', unilayerApi.getAllPairExchangeDetail);
 router.get('/getAllAvailableToken', unilayerApi.getAllAvailableToken);
 
 
-
 ///////////////////////////Routes for Database API ///////////////////////////////////////////////
  /**
   * 
