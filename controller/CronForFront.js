@@ -15,7 +15,7 @@ const allTransactions = mongoose.model('allTransactions');
 var apiKey = "e5bc8349129fe611931adedb2c6835f3500ba08cbcfb3ba24a01db648614";
 var exchangeAddress = "0xa478c2975ab1ea89e8196811f51a7b7ade33eb11";
 
-cron.schedule('*/40 * * * * *', async () => {
+cron.schedule('* 10 * * * *', async () => {
     await axios.get('https://api.coingecko.com/api/v3/exchanges/uniswap').then(async output=>{
         // console.log(output.data.tickers)
             var obj =  { pairName : 'top20',data : {marketData : output.data.tickers}, status : 'true'};
@@ -30,7 +30,7 @@ cron.schedule('*/40 * * * * *', async () => {
     });
 });
 
-cron.schedule('*/40 * * * * *', async () => {
+cron.schedule('* 10 * * * *', async () => {
     await axios.get('https://data-api.defipulse.com/api/v1/blocklytics/pools/v1/trades/'+exchangeAddress,{headers: {'Authorization': `Basic ${apiKey}` }}).then(async output=>{  
         var obj =  { transactionType : 'allTransactions',data : {transactionData : output.data}, status : 'true'};
             await allTransactions.findOneAndUpdate('top20',obj,{new: true, upsert: true},(err, doc) => {

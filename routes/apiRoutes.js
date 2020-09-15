@@ -210,6 +210,24 @@ router.get('/getAllAvailableToken', unilayerApi.getAllAvailableToken);
     */
    router.get('/getAllTransactions', databaseAPI.getAllTransactions);
 
+   /**
+   * @typedef swapToken
+   * @property {String} privateKey.required - Add privateKey - eg: 0x3e2b296f55b5768b0b6e28fa318e613a4c4bfa3a26142e89453eb6a89f7f5978
+   * @property {String} fromAddress.required - Add fromAddress - eg: 0x98A000309527D55031238457A95b80B6AdD3CcaB
+   * @property {String} amountIn.required - Add amountIn - eg: 1
+   * @property {String} amountOutMin.required - Add amountOutMin - eg: 23
+   * @property {String} path.required - Add path - eg: aswdsfdsfdvsdfsgbsdgb
+   * @property {String} toAddress.required - Add toAddress - eg: 0xf49ddDB0019ED8b03C03e75a9329a98746847dE5
+   * @property {String} deadline.required - Add deadline - eg: 5
+   */
+   /**
+   * @route POST /api/unilayer/swapToken
+   * @param {swapToken.model} req.body
+   * @group Contract_API
+   * @security Basic Auth
+   */
+router.post('/swapToken', unilayerApi.swapToken);
+
 
 
 

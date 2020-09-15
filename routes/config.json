@@ -1,7 +1,7 @@
 {
   "auth": {
-		"user": "user",
-		"pass": "pass"
+		"user": "UserNameByUniAdmin@Layer",
+		"pass": "PasswordByUniAdmin@Layer"
     },
     "connectionURL": "https://ropsten.infura.io/v3/92a626fb48cc4368a08cb87b51b6e967",
     "contractAddress": "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D"
